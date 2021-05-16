@@ -1,3 +1,4 @@
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import fakeData from '../../fakeData';
 import Product from '../Product/Product';
@@ -5,9 +6,12 @@ import './Shop.css'
 const Shop = () => {
     const first10 = fakeData.slice(0,10);
     const [products,setProducts] = useState(first10);
+    const[cart,setCart] = useState([]);
 
-    const handleAddProduct = () =>{
-        console.log("product added");
+    const handleAddProduct = (product) =>{
+        console.log("product added", product);
+        const newCart = [...cart, product];
+        setCart(newCart);
     }
 
     return (
@@ -20,6 +24,7 @@ const Shop = () => {
         </div>
         <div className="cart-container">
             <h3>this is cart</h3>
+            <h5>Order Summary : {cart.length}</h5>
         </div>
         </div>
     );
